@@ -14,5 +14,5 @@ object Constants {
 
     const val APP_EMAIL = "piyal.developer@gmail.com"
 
-    const val INITIAL_LOADING_ITEM_COUNT = 20
+    const val INITIALLY_LOADED_ITEM_COUNT = 20
 }
