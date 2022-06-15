@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_root"
+    app:startDestination="@id/destGallery">
+
+    <fragment
+        android:id="@+id/destGallery"
+        android:name="com.soumik.photohub.features.gallery.presentation.GalleryFragment"
+        android:label="@string/gallery"
+        tools:layout="@layout/fragment_gallery" />
+    <fragment
+        android:id="@+id/destFullScreenImage"
+        android:name="com.soumik.photohub.features.full_screen_view.presentation.FullScreenImageFragment"
+        android:label="@string/full_screen_image"
+        tools:layout="@layout/fragment_full_screen_image" />
+</navigation>
