@@ -64,7 +64,7 @@ class GalleryFragment : Fragment() {
         mViewModel.apply {
             pagedPhotoList.observe(viewLifecycleOwner) {
                 mBinding.apply {
-                    progressCircular.gone()
+                    showLoadingView(false)
                     galleryRV.visible()
                 }
                 viewLifecycleOwner.lifecycleScope.launch {
@@ -75,12 +75,12 @@ class GalleryFragment : Fragment() {
             }
 
             errorMessage.observe(viewLifecycleOwner) {
-                mBinding.progressCircular.gone()
+                mBinding.showLoadingView(false)
                 showSnackBar(mBinding,it)
             }
 
             loading.observe(viewLifecycleOwner) {
-                mBinding.progressCircular.handleVisibility(it)
+                mBinding.showLoadingView(it)
             }
         }
     }
@@ -109,6 +109,17 @@ class GalleryFragment : Fragment() {
                     }
                 }
             }
+        }
+    }
+
+    private fun FragmentGalleryBinding.showLoadingView(it: Boolean) {
+        if (it) {
+            galleryRV.visibility = View.GONE
+            shimmerProgress.visibility = View.VISIBLE
+            shimmerProgress.startShimmer()
+        } else {
+            shimmerProgress.visibility = View.GONE
+            shimmerProgress.stopShimmer()
         }
     }
 
