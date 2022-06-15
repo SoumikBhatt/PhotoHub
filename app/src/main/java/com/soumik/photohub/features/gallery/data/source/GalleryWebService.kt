@@ -15,7 +15,7 @@ copyright (c) 2022 Soumik Bhattacharjee. All rights reserved
 interface GalleryWebService {
 
     @GET("photos")
-    fun getPhotos(
+    suspend fun getPhotos(
         @Query("page") page: Int,
         @Query("per_page") perPage: Int? = Constants.INITIALLY_LOADED_ITEM_COUNT
     ) : Response<PhotoList>
