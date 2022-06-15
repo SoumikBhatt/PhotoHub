@@ -1,10 +1,11 @@
 package com.soumik.photohub.features
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.soumik.photohub.R
+import androidx.appcompat.app.AppCompatActivity
 import com.soumik.photohub.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityMainBinding
