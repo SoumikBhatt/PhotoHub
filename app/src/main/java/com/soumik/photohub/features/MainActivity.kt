@@ -1,7 +1,8 @@
-package com.soumik.photohub
+package com.soumik.photohub.features
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.soumik.photohub.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
