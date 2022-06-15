@@ -1,32 +1,30 @@
 package com.soumik.photohub.features.gallery.presentation
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.soumik.photohub.R
+import com.soumik.photohub.databinding.FragmentGalleryBinding
+import javax.inject.Inject
 
 class GalleryFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = GalleryFragment()
-    }
+    private lateinit var mBinding : FragmentGalleryBinding
+    @Inject lateinit var mViewModel: GalleryViewModel
 
-    private lateinit var viewModel: GalleryViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_gallery, container, false)
+    ): View {
+        mBinding = FragmentGalleryBinding.inflate(inflater)
+        return mBinding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(GalleryViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 
 }

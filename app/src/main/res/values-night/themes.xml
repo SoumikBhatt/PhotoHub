@@ -19,5 +19,11 @@
         <item name="android:background">@color/black_200</item>
     </style>
 
+    <style name="AppTitleTextAppearance" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/white_200</item>
+        <item name="android:textSize">@dimen/dimen_24_sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 
 </resources>
