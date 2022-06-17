@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -26,6 +28,12 @@ class GalleryFragment : Fragment() {
     @Inject lateinit var mViewModel: GalleryViewModel
     private val mPhotoListAdapter : PhotoListAdapter by lazy {
         PhotoListAdapter()
+    }
+
+    private val insetsController: WindowInsetsControllerCompat? by lazy {
+        activity?.window?.let { window ->
+            WindowInsetsControllerCompat(window, window.decorView)
+        }
     }
 
 
@@ -51,12 +59,18 @@ class GalleryFragment : Fragment() {
     }
 
     private fun setViews() {
+        insetsController?.isAppearanceLightStatusBars = true
         mBinding.apply {
             galleryRV.apply {
                 layoutManager = StaggeredGridLayoutManager(2,RecyclerView.VERTICAL)
                 adapter = mPhotoListAdapter
             }
+        }
 
+        mPhotoListAdapter.apply {
+            onItemClicked {
+                findNavController().navigate(GalleryFragmentDirections.actionDestGalleryToDestFullScreenImage(it))
+            }
         }
     }
 

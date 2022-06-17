@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/dimen_16_dp"
+    android:fitsSystemWindows="true"
     tools:context=".features.gallery.presentation.GalleryFragment">
 
 
@@ -14,6 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
+        android:visibility="gone"
         android:theme="@style/AppTitleTextAppearance"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

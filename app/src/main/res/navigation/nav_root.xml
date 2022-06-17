@@ -9,10 +9,21 @@
         android:id="@+id/destGallery"
         android:name="com.soumik.photohub.features.gallery.presentation.GalleryFragment"
         android:label="@string/gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_destGallery_to_destFullScreenImage"
+            app:destination="@id/destFullScreenImage"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
     <fragment
         android:id="@+id/destFullScreenImage"
         android:name="com.soumik.photohub.features.full_screen_view.presentation.FullScreenImageFragment"
         android:label="@string/full_screen_image"
-        tools:layout="@layout/fragment_full_screen_image" />
+        tools:layout="@layout/fragment_full_screen_image" >
+        <argument
+            android:name="photoData"
+            app:argType="com.soumik.photohub.features.gallery.domain.models.PhotoListItem"
+            app:nullable="true" />
+    </fragment>
 </navigation>

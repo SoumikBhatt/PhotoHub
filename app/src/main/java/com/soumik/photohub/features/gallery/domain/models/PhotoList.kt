@@ -1,5 +1,7 @@
 package com.soumik.photohub.features.gallery.domain.models
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
 
 /**
@@ -10,9 +12,10 @@ copyright (c) 2022 Soumik Bhattacharjee. All rights reserved
 
 class PhotoList : ArrayList<PhotoListItem>()
 
+@Parcelize
 data class PhotoListItem(
     @SerializedName("alt_description")
-    var altDescription: Any?,
+    var altDescription: String?,
     @SerializedName("blur_hash")
     var blurHash: String?,
     @SerializedName("color")
@@ -20,7 +23,7 @@ data class PhotoListItem(
     @SerializedName("created_at")
     var createdAt: String?,
     @SerializedName("description")
-    var description: Any?,
+    var description: String?,
     @SerializedName("height")
     var height: Int?,
     @SerializedName("id")
@@ -28,15 +31,16 @@ data class PhotoListItem(
     @SerializedName("links")
     var links: Links?,
     @SerializedName("promoted_at")
-    var promotedAt: Any?,
+    var promotedAt: String?,
     @SerializedName("updated_at")
     var updatedAt: String?,
     @SerializedName("urls")
     var urls: Urls?,
     @SerializedName("width")
     var width: Int?
-)
+) : Parcelable
 
+@Parcelize
 data class Links(
     @SerializedName("download")
     var download: String?,
@@ -46,8 +50,9 @@ data class Links(
     var html: String?,
     @SerializedName("self")
     var self: String?
-)
+) : Parcelable
 
+@Parcelize
 data class Urls(
     @SerializedName("full")
     var full: String?,
@@ -61,4 +66,4 @@ data class Urls(
     var smallS3: String?,
     @SerializedName("thumb")
     var thumb: String?
-)
+) : Parcelable
