@@ -13,6 +13,9 @@
         <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
         <item name="android:windowLightStatusBar">false</item>
         <!-- Customize your theme here. -->
+        <!-- default font. -->
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="font">@font/poppins_regular</item>
     </style>
 
     <style name="ParentLayoutBackgroundAppearance">
@@ -25,5 +28,9 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="imageViewRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">6%</item>
+    </style>
 
 </resources>

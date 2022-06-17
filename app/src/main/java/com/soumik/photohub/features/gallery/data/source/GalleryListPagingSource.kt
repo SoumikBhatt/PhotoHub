@@ -19,7 +19,6 @@ class GalleryListPagingSource @Inject constructor(private val galleryWebService:
 
     companion object {
         private const val STARTING_PAGE_NUMBER = 1
-        private const val TAG = "GalleryListPagingSource"
     }
 
     override fun getRefreshKey(state: PagingState<Int, PhotoListItem>): Int? {
