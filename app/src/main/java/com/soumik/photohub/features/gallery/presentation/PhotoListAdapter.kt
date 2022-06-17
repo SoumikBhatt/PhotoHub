@@ -35,7 +35,7 @@ class PhotoListAdapter : BasePagingAdapter<PhotoListItem, ItemGalleryPhotosBindi
 
     override fun bind(binding: ItemGalleryPhotosBinding, item: PhotoListItem, position: Int) {
         binding.apply {
-            Picasso.get().load(item.urls?.thumb).into(ivGalleryPhoto)
+            Picasso.get().load(item.urls?.small).into(ivGalleryPhoto)
             root.setOnClickListener { onItemClicked?.let { it(item) } }
         }
     }

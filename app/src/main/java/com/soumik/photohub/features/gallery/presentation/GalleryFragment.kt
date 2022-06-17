@@ -64,7 +64,6 @@ class GalleryFragment : Fragment() {
         mViewModel.apply {
             pagedPhotoList.observe(viewLifecycleOwner) {
                 mBinding.apply {
-                    showLoadingView(false)
                     galleryRV.visible()
                 }
                 viewLifecycleOwner.lifecycleScope.launch {
@@ -75,7 +74,6 @@ class GalleryFragment : Fragment() {
             }
 
             errorMessage.observe(viewLifecycleOwner) {
-                mBinding.showLoadingView(false)
                 showSnackBar(mBinding,it)
             }
 

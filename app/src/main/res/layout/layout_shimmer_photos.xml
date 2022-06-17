@@ -8,8 +8,8 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/shimmer_image_one"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.45"
-        android:layout_height="@dimen/dimen_100_dp"
+        app:layout_constraintWidth_percent="0.47"
+        android:layout_height="@dimen/dimen_300_dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@id/shimmer_image_two"
@@ -19,8 +19,8 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/shimmer_image_two"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.45"
-        android:layout_height="@dimen/dimen_100_dp"
+        app:layout_constraintWidth_percent="0.47"
+        android:layout_height="@dimen/dimen_300_dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginEnd="@dimen/dimen_8_dp"
