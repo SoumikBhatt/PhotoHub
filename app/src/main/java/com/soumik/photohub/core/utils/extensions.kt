@@ -1,6 +1,7 @@
 package com.soumik.photohub.core.utils
 
 import android.content.Context
+import android.content.Intent
 import android.view.View
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
@@ -10,6 +11,10 @@ import androidx.viewbinding.ViewBinding
 import com.google.android.material.snackbar.Snackbar
 import com.soumik.photohub.R
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
 created by Soumik on 6/16/2022
@@ -61,4 +66,43 @@ fun Context.loadImage(view: ImageView, url: String?) {
         .centerInside()
         .placeholder(circularProgressDrawable)
         .into(view)
+}
+
+fun Context.share(
+    subject: String? = "Checkout this Image",
+    body: String? = "",
+    chooserTitle: String? = "Share via"
+) {
+    try {
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.type = "text/plain"
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, subject)
+        shareIntent.putExtra(
+            Intent.EXTRA_TEXT,
+            "$body"
+        )
+        startActivity(Intent.createChooser(shareIntent, chooserTitle))
+    } catch (e: Exception) {
+    }
+}
+
+/** executing a task asynchronously
+ * on IO thread, and then returning the result in
+ * MAIN thread
+ * @param   onPreExecute    task to execute before the async task
+ * @param   doInBackground  task to be executed in background
+ * @param   onPostExecute   returning the result from the AsyncTask*/
+fun <R,T> CoroutineScope.executeAsyncTask(
+    params : T,
+    onPreExecute: () -> Unit,
+    doInBackground: (T) -> R,
+    onPostExecute: (R) -> Unit
+) {
+    launch {
+        onPreExecute()
+        val result = withContext(Dispatchers.IO) {
+            doInBackground(params)
+        }
+        onPostExecute(result)
+    }
 }

@@ -7,11 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.soumik.photohub.core.utils.Constants
-import com.soumik.photohub.core.utils.loadImage
-import com.soumik.photohub.core.utils.showSnackBar
+import com.soumik.photohub.core.utils.*
 import com.soumik.photohub.databinding.FragmentFullScreenImageBinding
 
 
@@ -39,12 +38,45 @@ class FullScreenImageFragment : Fragment() {
     }
 
     private fun viewListener() {
-        mBinding.backBtn.setOnClickListener { findNavController().navigateUp() }
+        mBinding.apply {
+            backBtn.setOnClickListener { findNavController().navigateUp() }
+            shareBtn.setOnClickListener { requireContext().share(body = args.photoData?.urls?.full) }
+            downloadBtn.setOnClickListener { downloadImageAndSave() }
+        }
     }
+
+    private fun downloadImageAndSave() {
+        val imageDownloader = ImageDownloader(requireContext())
+
+        mBinding.apply {
+            progressCircular.visible()
+            downloadBtn.gone()
+        }
+
+
+        lifecycleScope.executeAsyncTask(
+            params = args.photoData?.urls?.full,
+            onPreExecute = {},
+            doInBackground = {
+                return@executeAsyncTask imageDownloader.saveImageToStorage(it)
+            },
+            onPostExecute = {
+                mBinding.apply {
+                    progressCircular.gone()
+                    downloadBtn.visible()
+                }
+                if (it == ImageDownloader.DownloadStatus.SUCCESS) {
+                    showSnackBar(mBinding, "Photo saved to gallery")
+                } else showSnackBar(mBinding, "Photo saving failed")
+            })
+
+
+    }
+
 
     private fun setView() {
         try {
-            requireContext().loadImage(mBinding.fullScreenIV,args.photoData?.urls?.regular)
+            requireContext().loadImage(mBinding.fullScreenIV, args.photoData?.urls?.regular)
         } catch (e: Exception) {
             showSnackBar(mBinding, Constants.ERROR_MESSAGE)
             e.printStackTrace()
