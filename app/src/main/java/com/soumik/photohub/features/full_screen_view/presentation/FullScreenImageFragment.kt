@@ -10,9 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.soumik.photohub.core.utils.Constants
+import com.soumik.photohub.core.utils.loadImage
 import com.soumik.photohub.core.utils.showSnackBar
 import com.soumik.photohub.databinding.FragmentFullScreenImageBinding
-import com.squareup.picasso.Picasso
 
 
 @Suppress("DEPRECATION")
@@ -44,7 +44,7 @@ class FullScreenImageFragment : Fragment() {
 
     private fun setView() {
         try {
-            Picasso.get().load(args.photoData?.urls?.regular).into(mBinding.fullScreenIV)
+            requireContext().loadImage(mBinding.fullScreenIV,args.photoData?.urls?.regular)
         } catch (e: Exception) {
             showSnackBar(mBinding, Constants.ERROR_MESSAGE)
             e.printStackTrace()
