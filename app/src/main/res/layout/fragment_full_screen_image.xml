@@ -7,7 +7,7 @@
     tools:context=".features.full_screen_view.presentation.FullScreenImageFragment">
 
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.github.chrisbanes.photoview.PhotoView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/fullScreenIV"
