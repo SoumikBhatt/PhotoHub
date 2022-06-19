@@ -1,0 +1,37 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.PhotoHub" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryVariant">@color/orange</item>
+        <item name="colorOnPrimary">@color/white_200</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/black</item>
+        <item name="colorSecondaryVariant">@color/white_200</item>
+        <item name="colorOnSecondary">@color/red</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" >@color/white_200</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <!-- Customize your theme here. -->
+
+        <!-- default font. -->
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="font">@font/poppins_regular</item>
+    </style>
+
+    <style name="ParentLayoutBackgroundAppearance">
+        <item name="android:background">@color/white_200</item>
+    </style>
+
+    <style name="AppTitleTextAppearance" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">#0C0C0C</item>
+        <item name="android:textSize">@dimen/dimen_24_sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="imageViewRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">6%</item>
+    </style>
+
+</resources>

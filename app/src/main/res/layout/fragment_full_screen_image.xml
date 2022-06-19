@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".features.full_screen_view.presentation.FullScreenImageFragment">
+
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fullScreenIV"
+        android:scaleType="fitXY"
+        app:srcCompat="@mipmap/ic_launcher"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:padding="@dimen/dimen_16_dp"
+        android:background="@drawable/bg_rounded_btn"
+        android:layout_marginTop="@dimen/dimen_32_dp"
+        android:layout_marginStart="@dimen/dimen_16_dp"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+        android:id="@+id/backBtn"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="@dimen/dimen_32_dp">
+
+        <ProgressBar
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:padding="@dimen/dimen_16_dp"
+            android:background="@drawable/bg_rounded_btn"
+            android:id="@+id/progress_circular"/>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_16_dp"
+            tools:visibility="gone"
+            android:background="@drawable/bg_rounded_btn"
+            app:srcCompat="@drawable/ic_baseline_save_alt_24"
+            android:id="@+id/downloadBtn"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_16_dp"
+            android:layout_marginStart="@dimen/dimen_32_dp"
+            android:background="@drawable/bg_rounded_btn"
+            app:srcCompat="@drawable/ic_baseline_share_24"
+            android:id="@+id/shareBtn"/>
+
+    </LinearLayout>
+
+</FrameLayout>

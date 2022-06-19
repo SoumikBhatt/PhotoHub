@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dimen_8_dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/shimmer_image_one"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.47"
+        android:layout_height="@dimen/dimen_300_dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/shimmer_image_two"
+        android:layout_marginEnd="@dimen/dimen_8_dp"
+        app:shapeAppearance="?attr/actionButtonStyle"
+        app:shapeAppearanceOverlay="@style/imageViewRounded"
+        android:background="@color/shimmer_background"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/shimmer_image_two"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.47"
+        android:layout_height="@dimen/dimen_300_dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="@dimen/dimen_8_dp"
+        app:shapeAppearance="?attr/actionButtonStyle"
+        app:shapeAppearanceOverlay="@style/imageViewRounded"
+        android:background="@color/shimmer_background"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

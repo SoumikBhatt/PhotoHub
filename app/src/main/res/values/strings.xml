@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PhotoHub</string>
+    <string name="full_screen_image">FullScreenImage</string>
+    <string name="gallery">Gallery</string>
+</resources>
