@@ -8,9 +8,10 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import androidx.viewbinding.ViewBinding
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.snackbar.Snackbar
 import com.soumik.photohub.R
-import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -49,23 +50,24 @@ fun Fragment.showSnackBar(
 }
 
 fun Context.loadImage(view: ImageView, url: String?) {
-    val circularProgressDrawable = CircularProgressDrawable(this)
-    circularProgressDrawable.apply {
-        strokeWidth = 5f
-        centerRadius = 30f
-        setColorSchemeColors(
-            ContextCompat.getColor(this@loadImage, R.color.black_200)
-        )
-        start()
-    }
+    try {
+        val circularProgressDrawable = CircularProgressDrawable(this)
+        circularProgressDrawable.apply {
+            strokeWidth = 5f
+            centerRadius = 30f
+            setColorSchemeColors(
+                ContextCompat.getColor(this@loadImage, R.color.black_200)
+            )
+            start()
+        }
 
-    Picasso
-        .get()
-        .load(url)
-        .fit()
-        .centerInside()
-        .placeholder(circularProgressDrawable)
-        .into(view)
+        Glide.with(view)
+            .load(url)
+            .placeholder(circularProgressDrawable)
+            .apply(RequestOptions().override(2048,1600))
+            .into(view)
+    } catch (e: Exception) {
+    }
 }
 
 fun Context.share(

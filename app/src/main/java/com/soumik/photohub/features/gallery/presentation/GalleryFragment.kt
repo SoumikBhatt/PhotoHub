@@ -26,9 +26,7 @@ class GalleryFragment : Fragment() {
 
     private lateinit var mBinding : FragmentGalleryBinding
     @Inject lateinit var mViewModel: GalleryViewModel
-    private val mPhotoListAdapter : PhotoListAdapter by lazy {
-        PhotoListAdapter()
-    }
+    @Inject lateinit var mPhotoListAdapter : PhotoListAdapter
 
     private val insetsController: WindowInsetsControllerCompat? by lazy {
         activity?.window?.let { window ->

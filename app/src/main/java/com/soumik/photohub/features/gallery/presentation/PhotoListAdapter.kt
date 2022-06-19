@@ -1,12 +1,15 @@
 package com.soumik.photohub.features.gallery.presentation
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import com.soumik.photohub.core.base.BasePagingAdapter
+import com.soumik.photohub.core.utils.loadImage
 import com.soumik.photohub.databinding.ItemGalleryPhotosBinding
 import com.soumik.photohub.features.gallery.domain.models.PhotoListItem
-import com.squareup.picasso.Picasso
+import dagger.hilt.android.qualifiers.ActivityContext
+import javax.inject.Inject
 
 /**
 created by Soumik on 6/16/2022
@@ -14,7 +17,7 @@ piyal.developer@gmail.com
 copyright (c) 2022 Soumik Bhattacharjee. All rights reserved
  **/
 
-class PhotoListAdapter : BasePagingAdapter<PhotoListItem, ItemGalleryPhotosBinding>(
+class PhotoListAdapter @Inject constructor (@ActivityContext private val context: Context) : BasePagingAdapter<PhotoListItem, ItemGalleryPhotosBinding>(
     diffCallback = object : DiffUtil.ItemCallback<PhotoListItem>() {
         override fun areItemsTheSame(oldItem: PhotoListItem, newItem: PhotoListItem): Boolean {
             return oldItem.id == newItem.id
@@ -35,8 +38,8 @@ class PhotoListAdapter : BasePagingAdapter<PhotoListItem, ItemGalleryPhotosBindi
 
     override fun bind(binding: ItemGalleryPhotosBinding, item: PhotoListItem, position: Int) {
         binding.apply {
-            Picasso.get().load(item.urls?.small).into(ivGalleryPhoto)
             root.setOnClickListener { onItemClicked?.let { it(item) } }
+            context.loadImage(ivGalleryPhoto,item.urls?.small)
         }
     }
 
