@@ -32,3 +32,17 @@ Download the latest apk from the [apk folder](https://github.com/SoumikBhatt/Pho
   - [Shimmer](https://github.com/facebook/shimmer-android) - For loading views.
   - [PhotoView](https://github.com/Baseflow/PhotoView) - For Zoom In and Zoom Out features in Full screen Image
 
+
+## Screenshots
+
+Gallery (Portrait)    |  Gallery (Landscape)    
+:-------------------------:|:-------------------------:|
+![](https://github.com/SoumikBhatt/PhotoHub/blob/development/screenshots/gallery.png)|![](https://github.com/SoumikBhatt/PhotoHub/blob/development/screenshots/gallery_landscape.png)
+
+<br>
+<br/>
+
+Fullscreen (Portrait)    |  Fullscreen (Landscape)    
+:-------------------------:|:-------------------------:|
+![](https://github.com/SoumikBhatt/PhotoHub/blob/development/screenshots/full_screen.png)|![](https://github.com/SoumikBhatt/PhotoHub/blob/development/screenshots/full_screen_landscape.png)
+
