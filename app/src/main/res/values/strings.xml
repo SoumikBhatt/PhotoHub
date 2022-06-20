@@ -2,4 +2,5 @@
     <string name="app_name">PhotoHub</string>
     <string name="full_screen_image">FullScreenImage</string>
     <string name="gallery">Gallery</string>
+    <string name="photo_download_failed"><![CDATA[Sorry! Photo can\'t be downloaded, please make sure you are connected to internet & try again]]></string>
 </resources>

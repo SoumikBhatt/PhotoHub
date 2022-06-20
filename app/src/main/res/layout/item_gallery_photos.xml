@@ -16,7 +16,6 @@
         android:layout_marginEnd="@dimen/dimen_8_dp"
         app:shapeAppearance="?attr/actionButtonStyle"
         app:shapeAppearanceOverlay="@style/imageViewRounded"
-        app:srcCompat="@mipmap/ic_launcher"
         android:id="@+id/ivGalleryPhoto"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

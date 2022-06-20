@@ -10,15 +10,22 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.soumik.photohub.R
 import com.soumik.photohub.core.utils.*
 import com.soumik.photohub.databinding.FragmentFullScreenImageBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 @Suppress("DEPRECATION")
+@AndroidEntryPoint
 class FullScreenImageFragment : Fragment() {
 
     private lateinit var mBinding: FragmentFullScreenImageBinding
     private val args: FullScreenImageFragmentArgs by navArgs()
+
+    @Inject
+    lateinit var connectivity: IConnectivity
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +48,13 @@ class FullScreenImageFragment : Fragment() {
         mBinding.apply {
             backBtn.setOnClickListener { findNavController().navigateUp() }
             shareBtn.setOnClickListener { requireContext().share(body = args.photoData?.urls?.full) }
-            downloadBtn.setOnClickListener { downloadImageAndSave() }
+            downloadBtn.setOnClickListener {
+                if (connectivity.hasInternetConnection()) downloadImageAndSave()
+                else showSnackBar(
+                    mBinding,
+                    getString(R.string.photo_download_failed)
+                )
+            }
         }
     }
 
@@ -76,7 +89,9 @@ class FullScreenImageFragment : Fragment() {
 
     private fun setView() {
         try {
-            requireContext().loadImage(mBinding.fullScreenIV, args.photoData?.urls?.regular)
+            if (connectivity.hasInternetConnection())
+                requireContext().loadImage(mBinding.fullScreenIV, args.photoData?.urls?.regular)
+            else showSnackBar(mBinding, Constants.NO_NETWORK_CONNECTION)
         } catch (e: Exception) {
             showSnackBar(mBinding, Constants.ERROR_MESSAGE)
             e.printStackTrace()
@@ -97,7 +112,7 @@ class FullScreenImageFragment : Fragment() {
                 android.R.color.transparent
             ) else ContextCompat.getColor(
                 this,
-                com.soumik.photohub.R.color.white_200
+                R.color.white_200
             )
     }
 
