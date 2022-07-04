@@ -86,8 +86,8 @@ class NetworkModule {
                 }
                 response
             }
-            .connectTimeout(2000, TimeUnit.MILLISECONDS)
-            .readTimeout(2000, TimeUnit.MILLISECONDS)
+            .connectTimeout(20000, TimeUnit.MILLISECONDS)
+            .readTimeout(20000, TimeUnit.MILLISECONDS)
             .build()
     }
 
