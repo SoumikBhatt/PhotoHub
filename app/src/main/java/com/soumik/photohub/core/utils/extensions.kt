@@ -2,16 +2,20 @@ package com.soumik.photohub.core.utils
 
 import android.content.Context
 import android.content.Intent
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import androidx.viewbinding.ViewBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
 import com.soumik.photohub.R
+import com.soumik.photohub.databinding.BtmSheetPhotoInfoBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -64,7 +68,7 @@ fun Context.loadImage(view: ImageView, url: String?) {
         Glide.with(view)
             .load(url)
             .placeholder(circularProgressDrawable)
-            .apply(RequestOptions().override(2048,1600))
+            .apply(RequestOptions().override(2048, 1600))
             .into(view)
     } catch (e: Exception) {
     }
@@ -94,8 +98,8 @@ fun Context.share(
  * @param   onPreExecute    task to execute before the async task
  * @param   doInBackground  task to be executed in background
  * @param   onPostExecute   returning the result from the AsyncTask*/
-fun <R,T> CoroutineScope.executeAsyncTask(
-    params : T,
+fun <R, T> CoroutineScope.executeAsyncTask(
+    params: T,
     onPreExecute: () -> Unit,
     doInBackground: (T) -> R,
     onPostExecute: (R) -> Unit
@@ -107,4 +111,30 @@ fun <R,T> CoroutineScope.executeAsyncTask(
         }
         onPostExecute(result)
     }
+}
+
+fun Fragment.showPhotoInfoBottomSheet(description: String?,altDescription: String?="",location:String?,name: String?,likes: Int?) {
+    val (binding, dialog) = requireContext().inflateViewAndCreateDialog()
+
+    binding.apply {
+        tvPhotoDesc.text = description
+        tvPhotoLikes.text = likes.toString()
+        tvPhotoAltDesc.text = altDescription
+        tvPhotoLocation.text = location
+        tvPhotographerName.text = name
+    }
+
+    if (isAdded) dialog.show()
+}
+
+private fun Context.inflateViewAndCreateDialog(): Pair<BtmSheetPhotoInfoBinding, BottomSheetDialog> {
+    val inflater = LayoutInflater.from(this)
+    val binding = BtmSheetPhotoInfoBinding.inflate(inflater)
+
+    val dialog = BottomSheetDialog(this).apply {
+            setCancelable(true)
+            setContentView(binding.root)
+            create()
+        }
+    return Pair(binding, dialog)
 }

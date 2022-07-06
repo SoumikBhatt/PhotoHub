@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvPhotoLocation"
-            tools:text="Dhaka, Banglades"
+            tools:text="Dhaka, Bangladesh"
             android:layout_marginTop="@dimen/dimen_8_dp"
             app:drawableStartCompat="@drawable/ic_outline_location_on_24"
             android:drawablePadding="10dp"

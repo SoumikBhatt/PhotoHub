@@ -31,7 +31,7 @@ data class PhotoListItem(
     @SerializedName("links")
     var links: Links?,
     @SerializedName("likes")
-    var likes: String?,
+    var likes: Int?,
     @SerializedName("promoted_at")
     var promotedAt: String?,
     @SerializedName("updated_at")
