@@ -112,29 +112,3 @@ fun <R, T> CoroutineScope.executeAsyncTask(
         onPostExecute(result)
     }
 }
-
-fun Fragment.showPhotoInfoBottomSheet(description: String?,altDescription: String?="",location:String?,name: String?,likes: Int?) {
-    val (binding, dialog) = requireContext().inflateViewAndCreateDialog()
-
-    binding.apply {
-        tvPhotoDesc.text = description
-        tvPhotoLikes.text = likes.toString()
-        tvPhotoAltDesc.text = altDescription
-        tvPhotoLocation.text = location
-        tvPhotographerName.text = name
-    }
-
-    if (isAdded) dialog.show()
-}
-
-private fun Context.inflateViewAndCreateDialog(): Pair<BtmSheetPhotoInfoBinding, BottomSheetDialog> {
-    val inflater = LayoutInflater.from(this)
-    val binding = BtmSheetPhotoInfoBinding.inflate(inflater)
-
-    val dialog = BottomSheetDialog(this).apply {
-            setCancelable(true)
-            setContentView(binding.root)
-            create()
-        }
-    return Pair(binding, dialog)
-}
