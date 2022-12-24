@@ -10,14 +10,15 @@
     <com.github.chrisbanes.photoview.PhotoView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/fullScreenIV"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitXY"
+        android:id="@+id/fullScreenIV"/>
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|start"
-        android:padding="@dimen/dimen_16_dp"
+        android:padding="@dimen/dimen_12_dp"
+        android:tint="@color/white"
         android:background="@drawable/bg_rounded_btn"
         android:layout_marginTop="@dimen/dimen_32_dp"
         android:layout_marginStart="@dimen/dimen_16_dp"
@@ -32,29 +33,43 @@
         android:layout_marginBottom="@dimen/dimen_32_dp">
 
         <ProgressBar
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="@dimen/dimen_48_dp"
+            android:layout_height="@dimen/dimen_48_dp"
             android:visibility="gone"
             tools:visibility="visible"
+            android:indeterminateTint="@color/white"
             android:padding="@dimen/dimen_16_dp"
             android:background="@drawable/bg_rounded_btn"
             android:id="@+id/progress_circular"/>
 
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/dimen_16_dp"
+            android:padding="@dimen/dimen_12_dp"
             tools:visibility="gone"
+            android:tint="@color/white"
             android:background="@drawable/bg_rounded_btn"
             app:srcCompat="@drawable/ic_baseline_save_alt_24"
             android:id="@+id/downloadBtn"/>
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/dimen_16_dp"
+            android:layout_gravity="top|end"
+            android:padding="@dimen/dimen_12_dp"
             android:layout_marginStart="@dimen/dimen_32_dp"
+            android:tint="@color/white"
+            android:background="@drawable/bg_rounded_btn"
+            app:srcCompat="@drawable/ic_outline_info_24"
+            android:id="@+id/infoBtn"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_12_dp"
+            android:layout_marginStart="@dimen/dimen_32_dp"
+            android:tint="@color/white"
             android:background="@drawable/bg_rounded_btn"
             app:srcCompat="@drawable/ic_baseline_share_24"
             android:id="@+id/shareBtn"/>

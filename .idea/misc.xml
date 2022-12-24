@@ -8,6 +8,14 @@
         <entry key="..\:/Projects/Android/PhotoHub/app/src/main/res/layout/fragment_gallery.xml" value="0.371875" />
         <entry key="..\:/Projects/Android/PhotoHub/app/src/main/res/layout/item_gallery_photos.xml" value="0.37083333333333335" />
         <entry key="..\:/Projects/Android/PhotoHub/app/src/main/res/layout/layout_shimmer_photos.xml" value="0.37083333333333335" />
+        <entry key="app/src/main/res/drawable/bg_rounded_btn.xml" value="0.232" />
+        <entry key="app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.18" />
+        <entry key="app/src/main/res/drawable/ic_baseline_save_alt_24.xml" value="0.18" />
+        <entry key="app/src/main/res/drawable/ic_outline_photo_camera_24.xml" value="0.232" />
+        <entry key="app/src/main/res/layout/btm_sheet_photo_info.xml" value="0.7075" />
+        <entry key="app/src/main/res/layout/fragment_full_screen_image.xml" value="0.2482456140350877" />
+        <entry key="app/src/main/res/layout/item_gallery_photos.xml" value="0.14010416666666667" />
+        <entry key="app/src/main/res/layout/layout_shimmer_photos.xml" value="0.2947916666666667" />
       </map>
     </option>
   </component>

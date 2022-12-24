@@ -55,6 +55,16 @@ class FullScreenImageFragment : Fragment() {
                     getString(R.string.photo_download_failed)
                 )
             }
+            infoBtn.setOnClickListener {
+                if (isAdded)
+                    requireContext().showPhotoInfoBottomSheet(
+                        args.photoData?.description,
+                        args.photoData?.altDescription,
+                        args.photoData?.user?.location,
+                        args.photoData?.user?.name,
+                        args.photoData?.likes
+                    )
+            }
         }
     }
 
